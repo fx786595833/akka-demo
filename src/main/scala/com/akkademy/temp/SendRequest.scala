@@ -1,4 +1,4 @@
-package com.akkademy.messages.temp
+package com.akkademy.temp
 
 /**
   *
