@@ -1,10 +1,12 @@
 package com.akkademy
 
-import akka.actor.ActorSystem
+import akka.actor.{ActorSystem, Props}
 import akka.testkit.TestActorRef
 import akka.util.Timeout
-import com.akkademy.messages.{AkkademyDb, SetRequest}
+import com.akkademy.actor.AkkademyDb
+import com.akkademy.messages.SetRequest
 import org.scalatest.{FunSpecLike, Matchers}
+
 import scala.concurrent.duration._
 
 /**
@@ -25,5 +27,10 @@ class AkkademyDbSpec extends FunSpecLike with Matchers {
         akkademyDb.map.get("key") should equal(Some("value"))
       }
     }
+  }
+
+  describe("t") {
+    val actor = system.actorOf(Props(classOf[AkkademyDb]))
+    actor
   }
 }
