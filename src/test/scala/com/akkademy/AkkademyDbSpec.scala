@@ -1,36 +1,27 @@
 package com.akkademy
 
 import akka.actor.{ActorSystem, Props}
-import akka.testkit.TestActorRef
-import akka.util.Timeout
+import akka.testkit.{TestActorRef, TestKit, TestProbe}
 import com.akkademy.actor.AkkademyDb
-import com.akkademy.messages.SetRequest
+import com.akkademy.actor.AkkademyDb.SendRequest
 import org.scalatest.{FunSpecLike, Matchers}
-
-import scala.concurrent.duration._
 
 /**
   *
   * @author shawn feng 2018/10/22 23:08
   * @since
   **/
-class AkkademyDbSpec extends FunSpecLike with Matchers {
-  implicit val system = ActorSystem()
-  implicit val timeout = Timeout(5 seconds)
+class AkkademyDbSpec extends TestKit(ActorSystem()) with FunSpecLike with Matchers {
 
   describe("akkademyDb") {
-    describe("given SetRequest") {
+    describe("given SendRequest") {
       it("should place key/value into map") {
-        val actorRef = TestActorRef(new AkkademyDb)
-        actorRef ! SetRequest("key", "value")
-        val akkademyDb = actorRef.underlyingActor
-        akkademyDb.map.get("key") should equal(Some("value"))
+        val actorRef = TestActorRef[AkkademyDb](AkkademyDb.props)
+
+        actorRef ! SendRequest("key", "value")
+
+        actorRef.underlyingActor.map("key") should equal("value")
       }
     }
-  }
-
-  describe("t") {
-    val actor = system.actorOf(Props(classOf[AkkademyDb]))
-    actor
   }
 }
