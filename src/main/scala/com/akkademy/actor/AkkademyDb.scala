@@ -1,34 +1,32 @@
 package com.akkademy.actor
 
-import akka.actor.{Actor, Status}
-import akka.event.Logging
-import com.akkademy.messages.{GetRequest, KeyNotFoundException, SetRequest}
+import akka.actor.{Actor, ActorLogging, Props}
+import com.akkademy.actor.AkkademyDb.SendRequest
 
 import scala.collection.mutable
 
 /**
   *
-  * @author shawn feng 2018/10/22 22:56
+  * @author shawn feng 2018/10/26 23:20
   * @since
   **/
-class AkkademyDb extends Actor {
-  val map = new mutable.HashMap[String, Any]
-  val log = Logging(context.system, this)
+
+object AkkademyDb {
+
+  def props = Props[AkkademyDb]
+
+  final case class SendRequest(key: String, value: Any)
+
+}
+
+class AkkademyDb extends Actor with ActorLogging {
+  val map = new mutable.HashMap[String, Any]()
 
   override def receive: Receive = {
-    case SetRequest(key, value) => {
+    case SendRequest(key, value) =>
       log.info(s"received SetRequest - key: $key value: $value")
-      map += (key -> value)
-      sender() ! Status.Success
-    }
-    case GetRequest(key) => {
-      log.info(s"received GetRequest - key: $key")
-      if (map contains key) sender() ! map.get(key)
-      else Status.Failure(new KeyNotFoundException(s"$key not found!"))
-    }
-    case unknown => {
+      if (!map.contains("key")) map += (key -> value)
+    case unknown =>
       log.info(s"received unknown message: $unknown")
-      Status.Failure(new ClassNotFoundException)
-    }
   }
 }
