@@ -1,9 +1,9 @@
 package com.akkademy
 
-import akka.actor.{ActorSystem, Props}
-import akka.testkit.{TestActorRef, TestKit, TestProbe}
+import akka.actor.{ActorSystem}
+import akka.testkit.{TestActorRef, TestKit}
 import com.akkademy.actor.AkkademyDb
-import com.akkademy.actor.AkkademyDb.SetRequest
+import com.akkademy.message.AkkademyMessage.SetRequest
 import org.scalatest.{FunSpecLike, Matchers}
 
 /**

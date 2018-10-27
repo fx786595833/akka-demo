@@ -2,8 +2,9 @@ package com.akkademy
 
 import akka.actor.ActorSystem
 import akka.util.Timeout
-import com.akkademy.actor.AkkademyDb.{GetRequest, SetRequest}
+import com.akkademy.actor.AkkademyDb.GetRequest
 import akka.pattern.ask
+import com.akkademy.message.AkkademyMessage.{GetRequest, SetRequest}
 
 import scala.concurrent.duration._
 
