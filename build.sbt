@@ -35,3 +35,8 @@ lazy val server = mkProject("akkademy-server").settings(
 
 lazy val client = mkProject("akkademy-client") dependsOn common
 
+lazy val akkademaid = mkProject("akkademaid").settings(
+  libraryDependencies ++= Seq(
+    "com.syncthemall" % "boilerpipe" % "1.2.2"
+  )
+) dependsOn server
