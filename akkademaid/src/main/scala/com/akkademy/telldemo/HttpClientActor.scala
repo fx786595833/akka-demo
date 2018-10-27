@@ -1,7 +1,7 @@
-package com.akkademy.askdemo
+package com.akkademy.telldemo
 
 import akka.actor.{Actor, ActorLogging, Props}
-import com.akkademy.askdemo.HttpClientActor.{GetArticleFromUrl, ResponseArticleFromUrl}
+import com.akkademy.telldemo.HttpClientActor.{GetArticleFromUrl, ResponseArticleFromUrl}
 
 /**
   *

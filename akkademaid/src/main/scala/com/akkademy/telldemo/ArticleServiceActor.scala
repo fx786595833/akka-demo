@@ -1,10 +1,10 @@
-package com.akkademy.askdemo
+package com.akkademy.telldemo
 
 import akka.actor.{Actor, Props}
 import akka.util.Timeout
-import com.akkademy.askdemo.ArticleCacheActor.GetRequest
-import com.akkademy.askdemo.ArticleServiceActor.ParseArticle
-import com.akkademy.askdemo.HttpClientActor.GetArticleFromUrl
+import com.akkademy.telldemo.ArticleCacheActor.GetRequest
+import com.akkademy.telldemo.ArticleServiceActor.ParseArticle
+import com.akkademy.telldemo.HttpClientActor.GetArticleFromUrl
 
 import scala.concurrent.duration._
 

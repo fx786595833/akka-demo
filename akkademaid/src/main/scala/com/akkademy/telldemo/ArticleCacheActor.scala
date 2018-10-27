@@ -1,7 +1,7 @@
-package com.akkademy.askdemo
+package com.akkademy.telldemo
 
 import akka.actor.{Actor, ActorLogging, Props}
-import com.akkademy.askdemo.ArticleCacheActor.{GetRequest, GetRespond, NoCache, SetRequest}
+import com.akkademy.telldemo.ArticleCacheActor.{GetRequest, GetRespond, NoCache, SetRequest}
 
 import scala.collection.mutable
 

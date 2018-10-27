@@ -1,7 +1,7 @@
-package com.akkademy.askdemo
+package com.akkademy.telldemo
 
 import akka.actor.ActorSystem
-import com.akkademy.askdemo.ArticleServiceActor.ParseArticle
+import com.akkademy.telldemo.ArticleServiceActor.ParseArticle
 import akka.pattern.ask
 import akka.util.Timeout
 

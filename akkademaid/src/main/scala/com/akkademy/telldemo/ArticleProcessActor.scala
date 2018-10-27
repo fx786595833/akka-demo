@@ -1,9 +1,9 @@
-package com.akkademy.askdemo
+package com.akkademy.telldemo
 
 import akka.actor.{Actor, ActorLogging, ActorRef, Props}
-import com.akkademy.askdemo.ArticleCacheActor.{GetRespond, NoCache, SetRequest}
-import com.akkademy.askdemo.ArticleParseActor.{ParseHtmlArticle, ParseResponse}
-import com.akkademy.askdemo.HttpClientActor.{GetArticleFromUrl, ResponseArticleFromUrl}
+import com.akkademy.telldemo.ArticleCacheActor.{GetRespond, NoCache, SetRequest}
+import com.akkademy.telldemo.ArticleParseActor.{ParseHtmlArticle, ParseResponse}
+import com.akkademy.telldemo.HttpClientActor.{GetArticleFromUrl, ResponseArticleFromUrl}
 
 /**
   *
