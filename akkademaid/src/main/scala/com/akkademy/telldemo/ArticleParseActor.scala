@@ -1,7 +1,7 @@
-package com.akkademy.askdemo
+package com.akkademy.telldemo
 
 import akka.actor.{Actor, ActorLogging, Props}
-import com.akkademy.askdemo.ArticleParseActor.{ParseHtmlArticle, ParseResponse}
+import com.akkademy.telldemo.ArticleParseActor.{ParseHtmlArticle, ParseResponse}
 
 /**
   *
