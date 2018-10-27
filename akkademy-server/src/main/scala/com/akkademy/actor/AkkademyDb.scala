@@ -1,7 +1,7 @@
 package com.akkademy.actor
 
 import akka.actor.{Actor, ActorLogging, Props, Status}
-import com.akkademy.actor.AkkademyDb.{GetRequest, KeyNotFound, SetRequest}
+import com.akkademy.message.AkkademyMessage._
 
 import scala.collection.mutable
 
@@ -14,13 +14,6 @@ import scala.collection.mutable
 object AkkademyDb {
 
   def props = Props[AkkademyDb]
-
-  final case class SetRequest(key: String, value: Any)
-
-  final case class GetRequest(key: String)
-
-  final case class KeyNotFound(key: String) extends Exception
-
 }
 
 class AkkademyDb extends Actor with ActorLogging {
@@ -37,6 +30,12 @@ class AkkademyDb extends Actor with ActorLogging {
         case Some(v) => sender() ! v
         case None => sender() ! Status.Failure(KeyNotFound(key))
       }
+    case SetIfNotExists(key, value) =>
+      if (!map.contains(key)) map += (key -> value)
+      sender() ! Status.Success
+    case Delete(key) =>
+      map -= key
+      sender() ! Status.Success
     case unknown =>
       log.info(s"received unknown message: $unknown")
       Status.Failure(new ClassNotFoundException)

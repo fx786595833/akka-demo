@@ -1,7 +1,6 @@
 package com.akkademy
 
 import akka.actor.{ActorSystem, Status}
-import akka.actor.Status.Status
 import akka.testkit.{TestKit, TestProbe}
 import com.akkademy.actor.PongActor
 import org.scalatest.{FunSpecLike, Matchers}
