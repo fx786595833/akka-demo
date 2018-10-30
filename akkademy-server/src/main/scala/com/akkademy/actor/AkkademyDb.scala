@@ -26,7 +26,7 @@ class AkkademyDb extends Actor with ActorLogging {
       sender() ! Status.Success
     case GetRequest(key) =>
       log.info(s"received GetRequest - key: $key")
-      map(key) match {
+      map.get(key) match {
         case Some(v) => sender() ! v
         case None => sender() ! Status.Failure(KeyNotFound(key))
       }

@@ -20,7 +20,7 @@ object Entry {
 
     val articleServiceActor = system.actorOf(ArticleServiceActor.props)
 
-    val result = articleServiceActor ? ParseArticle("www.baidu.com")
+    val result = articleServiceActor ? ParseArticle("www.baidu.com") 
 
     Await.result(result, 5 seconds)
 
