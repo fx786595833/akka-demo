@@ -7,9 +7,11 @@ package com.akkademy.message
   **/
 object AkkademyMessage {
 
-  final case class SetRequest(key: String, value: Any)
+  trait Request
 
-  final case class GetRequest(key: String)
+  final case class SetRequest(key: String, value: Any) extends Request
+
+  final case class GetRequest(key: String) extends Request
 
   final case class KeyNotFound(key: String) extends Exception
 
