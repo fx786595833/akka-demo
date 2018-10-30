@@ -42,3 +42,4 @@ lazy val articleParser = mkProject("article-parser").settings(
     "com.syncthemall" % "boilerpipe" % "1.2.2"
   )
 ) dependsOn common
+
